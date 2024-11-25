@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Amore';
+    src: url('./assets/fonts/La-Gagliane.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,6 +22,7 @@
     padding: 1rem 2rem;
     background-color: transparent;
     color: rgb(253, 253, 253);
+    z-index: 100;
 }
 
 .nav-brand {
@@ -24,6 +32,7 @@
 .logo {
     text-decoration: none;
     color: inherit;
+    z-index: 100;
 }
 
 .hamburger {
@@ -33,6 +42,7 @@
     padding: 0.5rem 1rem;
     font-size: 1rem;
     color: inherit;
+    z-index: 100;
 }
 
 .canvas {
@@ -85,4 +95,37 @@
     .bar.active:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
     }
+}
+
+#cursor {
+    background-color: black;
+    border-radius: 50px;
+
+    height: 80px;
+    width: 80px;
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+
+    filter: invert(1);
+    mix-blend-mode: difference;
+}
+
+#tip {
+    background-color: white;
+    color: black;
+    border-radius: 15px;
+
+    position: absolute;
+    top: 10px;
+    left: 60px;
+    padding: 5px 10px;
+    pointer-events: none;
+
+    animation: blink 1s step-start 0s infinite;
+    -webkit-animation: blink 1s step-start 0s infinite;
+
 }

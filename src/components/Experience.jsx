@@ -1,27 +1,25 @@
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import Lights from './Lights.jsx'
+import Ocean from './Ocean.jsx'
+import ParticleModel from './ParticleModel.jsx'
+import { forwardRef } from 'react'
+import { Leva } from 'leva'
+import { useControls } from 'leva'
+import { useRef } from "react"
+import { EffectComposer } from '@react-three/postprocessing'
+import { Bloom } from '@react-three/postprocessing'
+import { Html } from '@react-three/drei'
 
 export default function Experience() {
+    const directionalLightRef = useRef()
+
     return <>
-
-        <OrbitControls makeDefault />
-
-        <Lights />
-
-        <mesh castShadow position-x={- 2}>
-            <sphereGeometry />
-            <meshStandardMaterial color="orange" />
-        </mesh>
-
-        <mesh castShadow position-x={2} scale={1.5}>
-            <boxGeometry />
-            <meshStandardMaterial color="mediumpurple" />
-        </mesh>
-
-        <mesh receiveShadow position-y={- 1} rotation-x={- Math.PI * 0.5} scale={10}>
-            <planeGeometry />
-            <meshStandardMaterial color="greenyellow" />
-        </mesh>
-
+        <EffectComposer>
+            <Bloom />
+        </EffectComposer>
+        {/* <OrbitControls makeDefault /> */}
+        <Lights ref={directionalLightRef} />
+        <ParticleModel scale={1000} rotation={[0, 5.3, 0]} position={[0, 0, 0]} lightRef={directionalLightRef} />
+        {/* <Ocean /> */}
     </>
-}
+}   

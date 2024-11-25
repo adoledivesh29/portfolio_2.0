@@ -6,28 +6,27 @@ export default {
     root: 'src/',
     publicDir: '../public/',
     plugins:
-    [
-        // Restart server on static/public file change
-        restart({ restart: [ '../public/**', ] }),
+        [
+            // Restart server on static/public file change
+            restart({ restart: ['../public/**',] }),
 
-        // React support
-        react(),
+            // React support
+            react(),
 
-        // .js file support as if it was JSX
-        {
-            name: 'load+transform-js-files-as-jsx',
-            async transform(code, id)
+            // .js file support as if it was JSX
             {
-                if (!id.match(/src\/.*\.js$/))
-                    return null
+                name: 'load+transform-js-files-as-jsx',
+                async transform(code, id) {
+                    if (!id.match(/src\/.*\.js$/))
+                        return null
 
-                return transformWithEsbuild(code, id, {
-                    loader: 'jsx',
-                    jsx: 'automatic',
-                });
+                    return transformWithEsbuild(code, id, {
+                        loader: 'jsx',
+                        jsx: 'automatic',
+                    });
+                },
             },
-        },
-    ],
+        ],
     server:
     {
         host: true, // Open to local network and display URL
@@ -39,4 +38,5 @@ export default {
         emptyOutDir: true, // Empty the folder first
         sourcemap: true // Add sourcemap
     },
+    assetsInclude: ['**/*.glb', '**/*.gltf']
 }
