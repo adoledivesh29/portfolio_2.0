@@ -38,21 +38,19 @@ root.render(
                 }}
                 onCreated={setBg}
             >
-                <ScrollControls pages={4}>
+                <ScrollControls pages={6}>
                     <Sparkles size={2} scale={10} count={100} color='gold' />
                     <Lights />
                     <Hero />
+                    <Physball position={[0, -50, 0]} />
                     <Scroll html style={{ width: '100%' }}>
-                        <h1 className="slogan text-6xl text-white mt-800 mb-20 leading-slogan-leading font-customHeading text-center pointer-events-none">Innovating Interfaces with Precision</h1>
+                        <h1 className="slogan text-6xl backdrop-blur-sm text-white mt-800 mb-20 leading-slogan-leading font-customHeading text-center pointer-events-none">Innovating Interfaces with Precision</h1>
                         <About />
                         <ProjectTitle />
                     </Scroll>
-                    <Projects position={[0, -20, 0]} />
+                    <Projects position={[0, -25, 0]} />
                 </ScrollControls>
             </Canvas>
         </div>
-        {/* <div className='canvas'>
-            <Physball />
-        </div> */}
     </>
 )

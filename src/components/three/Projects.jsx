@@ -12,17 +12,17 @@ export default function Projects({ ...props }) {
 
     const randomFloats = {
         top: {
-            speed: 1 + Math.random(),
+            speed: 2 + Math.random(),
             rotationIntensity: 0.3 + Math.random() * 0.5,
             floatIntensity: 0.2 + Math.random() * 0.4
         },
         middle: {
-            speed: 1 + Math.random(),
+            speed: 2 + Math.random(),
             rotationIntensity: 0.3 + Math.random() * 0.5,
             floatIntensity: 0.2 + Math.random() * 0.4
         },
         bottom: {
-            speed: 1 + Math.random(),
+            speed: 2 + Math.random(),
             rotationIntensity: 0.3 + Math.random() * 0.5,
             floatIntensity: 0.2 + Math.random() * 0.4
         }
