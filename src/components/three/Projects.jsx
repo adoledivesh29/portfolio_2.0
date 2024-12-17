@@ -60,6 +60,11 @@ export default function Projects({ ...props }) {
     const typerium = useTexture('/images/projects/typerium.png');
     const furniture = useTexture('/images/projects/furniture.png');
 
+    const isMobile = window.innerWidth < 768; // Example breakpoint
+    const topPosition = isMobile ? [0, 5, 0] : [-2.5, 5, 0];
+    const middlePosition = isMobile ? [0, 0, 0] : [2.5, 0, 0];
+    const bottomPosition = isMobile ? [0, -5, 0] : [-2.5, -5, 0];
+
     useEffect(() => {
         [B1, typerium, furniture].forEach(texture => {
             texture.rotation = Math.PI / 2;
@@ -74,13 +79,14 @@ export default function Projects({ ...props }) {
             <ambientLight intensity={0.5} />
             <Scroll>
                 <group position={props.position}>
+                    {/* Adjust positions based on window.innerWidth */}
                     {/* Top Card */}
                     <Float
                         speed={randomFloats.top.speed}
                         rotationIntensity={randomFloats.top.rotationIntensity}
                         floatIntensity={randomFloats.top.floatIntensity}
                     >
-                        <group position={[-2.5, 5, 0]} scale={2}>
+                        <group position={topPosition} scale={2}>
                             <mesh geometry={nodes.Plane.geometry} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
                                 <MeshTransmissionMaterial {...config} />
                             </mesh>
@@ -102,7 +108,7 @@ export default function Projects({ ...props }) {
                         rotationIntensity={randomFloats.middle.rotationIntensity}
                         floatIntensity={randomFloats.middle.floatIntensity}
                     >
-                        <group position={[2.5, 0, 0]} scale={2}>
+                        <group position={middlePosition} scale={2}>
                             <mesh geometry={nodes.Plane.geometry} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
                                 <MeshTransmissionMaterial {...config} />
                             </mesh>
@@ -124,7 +130,7 @@ export default function Projects({ ...props }) {
                         rotationIntensity={randomFloats.bottom.rotationIntensity}
                         floatIntensity={randomFloats.bottom.floatIntensity}
                     >
-                        <group position={[-2.5, -5, 0]} scale={2}>
+                        <group position={bottomPosition} scale={2}>
                             <mesh geometry={nodes.Plane.geometry} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
                                 <MeshTransmissionMaterial {...config} />
                             </mesh>

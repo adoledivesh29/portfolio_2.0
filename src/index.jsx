@@ -18,6 +18,8 @@ import Lights from './components/three/Lights.jsx'
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 const setBg = ({ gl }) => { gl.setClearColor('#000000') }
 
+const projectsPosition = window.innerWidth < 400 ? [0, -36, 0] : [0, -25, 0];
+
 root.render(
     <>
         <Cursor />
@@ -42,13 +44,16 @@ root.render(
                     <Sparkles size={2} scale={10} count={100} color='gold' />
                     <Lights />
                     <Hero />
-                    <Physball position={[0, -50, 0]} />
+
+                    <Physball position={window.innerWidth < 400 ? [0, -50, 0] : [0, -38, 0]} />
                     <Scroll html style={{ width: '100%' }}>
-                        <h1 className="slogan text-6xl backdrop-blur-sm text-white mt-800 mb-20 leading-slogan-leading font-customHeading text-center pointer-events-none">Innovating Interfaces with Precision</h1>
-                        <About />
+                        <html>
+                            <h1 className="slogan text-6xl backdrop-blur-sm text-white mt-800 mb-20 leading-slogan-leading font-customHeading text-center pointer-events-none">Innovating Interfaces with Precision</h1>
+                            <About />
+                        </html>
                         <ProjectTitle />
                     </Scroll>
-                    <Projects position={[0, -25, 0]} />
+                    <Projects position={projectsPosition} />
                 </ScrollControls>
             </Canvas>
         </div>

@@ -5,18 +5,18 @@ import { Physics, useSphere, useBox } from "@react-three/cannon"
 import { EffectComposer, N8AO, SMAA, Bloom } from "@react-three/postprocessing"
 import { Scroll } from "@react-three/drei"
 import { useControls } from "leva"
+import { useEffect, useState } from "react";
 
 const rfs = () => THREE.MathUtils.randFloat(-55, -25);
 const sphereGeometry = new THREE.SphereGeometry(0.5, 32, 32)
 const baubleMaterial = new THREE.MeshStandardMaterial({ color: "#6b6c1f", roughness: 0, envMapIntensity: 0.5, metalness: 0.7 })
 
-function TextWithPhysics({ text }) {
-    const [ref] = useBox(() => ({ mass: 1, position: [0, -38, 0] }));
+function TextWithPhysics(...props) {
     return (
         <Text
-            position={[0, -38, 0]} // Position in 3D space [x, y, z]
+            position={props[0].targetPosition} // Position in 3D space [x, y, z]
             font="./assets/fonts/La-Gagliane.otf"
-            fontSize={1} // Size of the text
+            fontSize={window.innerWidth < 400 ? 0.5 : 1} // Size of the text
             color="white" // Text color
             anchorX="center" // Horizontal alignment
             anchorY="middle" // Vertical alignment
@@ -27,13 +27,25 @@ function TextWithPhysics({ text }) {
 }
 
 export function Physball(...props) {
+    const [showClumps, setShowClumps] = useState(window.innerHeight < 400);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setShowClumps(window.innerHeight < 400);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <>
+            {console.log("props ::", props[0].position)}
             <Physics debug gravity={[0, 2, 0]} iterations={10}>
-                <Pointer />
-                <Scroll>
-                    <Clump targetPosition={props.position} />
-                    <TextWithPhysics text="Hello World!" />
+                <Pointer targetPosition={props[0].position} />
+                <Scroll >
+                    {showClumps && <Clump targetPosition={props[0].position} />}
+                    <TextWithPhysics text="Hello World!" targetPosition={props[0].position} />
                 </Scroll>
             </Physics>
             <EffectComposer disableNormalPass multisampling={0}>
@@ -46,7 +58,7 @@ export function Physball(...props) {
 }
 
 function Clump({ targetPosition = [0, -38, 0], mat = new THREE.Matrix4(), vec = new THREE.Vector3(), ...props }) {
-    const { outlines } = useControls({ outlines: { value: 0.0, step: 0.01, min: 0, max: 0.05 } })
+    console.log("props ::", props)
     const texture = useTexture("images/projects/katie-harp-SG59-rbcNRg-unsplash.jpg")
     texture.wrapT = THREE.RepeatWrapping;
     texture.wrapS = THREE.RepeatWrapping;
@@ -74,9 +86,10 @@ function Clump({ targetPosition = [0, -38, 0], mat = new THREE.Matrix4(), vec = 
     )
 }
 
-function Pointer() {
+function Pointer(...props) {
+    console.log("props ::",)
     const viewport = useThree((state) => state.viewport)
-    const [ref, api] = useSphere(() => ({ args: [2], position: [0, -35, 0] }))
+    const [ref, api] = useSphere(() => ({ args: [2], position: props[0].targetPosition }))
     useFrame((state) => {
         const mouseX = (state.mouse.x * viewport.width) / 2;
         const mouseY = (state.mouse.y * viewport.height) / 2;
