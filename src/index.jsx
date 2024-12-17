@@ -38,7 +38,7 @@ root.render(
                 }}
                 onCreated={setBg}
             >
-                <ScrollControls pages={6}>
+                <ScrollControls pages={8}>
                     <Sparkles size={2} scale={10} count={100} color='gold' />
                     <Lights />
                     <Hero />
