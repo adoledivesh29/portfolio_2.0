@@ -45,7 +45,6 @@ root.render(
                     <Lights />
                     <Hero />
 
-                    <Physball position={window.innerWidth < 400 ? [0, -50, 0] : [0, -38, 0]} />
                     <Scroll html style={{ width: '100%' }}>
                         <html>
                             <h1 className="slogan text-6xl backdrop-blur-sm text-white mt-800 mb-20 leading-slogan-leading font-customHeading text-center pointer-events-none">Innovating Interfaces with Precision</h1>
@@ -54,6 +53,7 @@ root.render(
                         <ProjectTitle />
                     </Scroll>
                     <Projects position={projectsPosition} />
+                    <Physball position={window.innerWidth < 400 ? [0, -50, 0] : [0, -38, 0]} />
                 </ScrollControls>
             </Canvas>
         </div>

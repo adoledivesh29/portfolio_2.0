@@ -27,17 +27,17 @@ function TextWithPhysics(...props) {
 }
 
 export function Physball(...props) {
-    const [showClumps, setShowClumps] = useState(window.innerHeight < 400);
+    const [showClumps, setShowClumps] = useState(true);
 
     useEffect(() => {
         const handleResize = () => {
-            setShowClumps(window.innerHeight < 400);
+            setShowClumps(window.innerWidth >= 400);
         };
 
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-
+    
     return (
         <>
             {console.log("props ::", props[0].position)}
