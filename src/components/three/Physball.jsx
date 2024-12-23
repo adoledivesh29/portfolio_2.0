@@ -6,6 +6,7 @@ import { EffectComposer, N8AO, SMAA, Bloom } from "@react-three/postprocessing"
 import { Scroll } from "@react-three/drei"
 import { useControls } from "leva"
 import { useEffect, useState } from "react";
+import Skills from "./Skills"
 
 const rfs = () => THREE.MathUtils.randFloat(-55, -25);
 const sphereGeometry = new THREE.SphereGeometry(0.5, 32, 32)
@@ -37,7 +38,7 @@ export function Physball(...props) {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-    
+
     return (
         <>
             {console.log("props ::", props[0].position)}
@@ -53,6 +54,8 @@ export function Physball(...props) {
                 {/* <Bloom mipmapBlur levels={7} intensity={1} /> */}
                 <SMAA />
             </EffectComposer>
+            <Skills position={[props[0].position[0], props[0].position[1] - 8, props[0].position[2]]} />
+
         </>
     )
 }
