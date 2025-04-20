@@ -2,13 +2,20 @@ import { MeshTransmissionMaterial, useGLTF, OrbitControls } from '@react-three/d
 import React, { useEffect } from 'react';
 import * as THREE from 'three';
 import { useTexture, Float } from '@react-three/drei';
-import { useControls } from 'leva';
-import { ScrollControls, Scroll } from '@react-three/drei'
-
+import { Canvas } from '@react-three/fiber'
+import { Suspense } from 'react';
+import ScrollFloat from '../../custom/ScrollFloat';
 
 const rfs = THREE.MathUtils.randFloatSpread
 
-export default function Projects({ ...props }) {
+// Create a new component for the cards
+function Cards({ position }) {
+    const { nodes, materials } = useGLTF('/models/glass_card_3.glb')
+    const infoPlane = nodes.Plane001;
+
+    const B1 = useTexture('/images/projects/b1.png');
+    const typerium = useTexture('/images/projects/typerium.png');
+    const furniture = useTexture('/images/projects/furniture.png');
 
     const randomFloats = {
         top: {
@@ -53,17 +60,10 @@ export default function Projects({ ...props }) {
         bevelSegments: 5,
     }
 
-    const { nodes, materials } = useGLTF('/models/glass_card_3.glb')
-    const infoPlane = nodes.Plane001;
-
-    const B1 = useTexture('/images/projects/b1.png');
-    const typerium = useTexture('/images/projects/typerium.png');
-    const furniture = useTexture('/images/projects/furniture.png');
-
-    const isMobile = window.innerWidth < 768; // Example breakpoint
-    const topPosition = isMobile ? [0, 5, 0] : [-2.5, 5, 0];
-    const middlePosition = isMobile ? [0, 0, 0] : [2.5, 0, 0];
-    const bottomPosition = isMobile ? [0, -5, 0] : [-2.5, -5, 0];
+    const isMobile = window.innerWidth < 768;
+    const topPosition = isMobile ? [0, 5, 0] : [-1.5, 2.5, 0];
+    const middlePosition = isMobile ? [0, 0, 0] : [1.5, 0, 0];
+    const bottomPosition = isMobile ? [0, -5, 0] : [-1.5, -2.5, 0];
 
     useEffect(() => {
         [B1, typerium, furniture].forEach(texture => {
@@ -74,80 +74,109 @@ export default function Projects({ ...props }) {
     }, [B1, typerium, furniture]);
 
     return (
-        <>
-            <directionalLight position={[10, 10, 5]} intensity={2} />
-            <ambientLight intensity={0.5} />
-            <Scroll>
-                <group position={props.position}>
-                    {/* Adjust positions based on window.innerWidth */}
-                    {/* Top Card */}
-                    <Float
-                        speed={randomFloats.top.speed}
-                        rotationIntensity={randomFloats.top.rotationIntensity}
-                        floatIntensity={randomFloats.top.floatIntensity}
-                    >
-                        <group position={topPosition} scale={2}>
-                            <mesh geometry={nodes.Plane.geometry} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
-                                <MeshTransmissionMaterial {...config} />
-                            </mesh>
-                            <mesh geometry={infoPlane.geometry} position={infoPlane.position} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
-                                <meshStandardMaterial
-                                    map={B1}
-                                    roughness={0.8}
-                                    metalness={0.7}
-                                    clearcoat={1}
-                                    clearcoatRoughness={0.2}
-                                />
-                            </mesh>
-                        </group>
-                    </Float>
-
-                    {/* Middle Card */}
-                    <Float
-                        speed={randomFloats.middle.speed}
-                        rotationIntensity={randomFloats.middle.rotationIntensity}
-                        floatIntensity={randomFloats.middle.floatIntensity}
-                    >
-                        <group position={middlePosition} scale={2}>
-                            <mesh geometry={nodes.Plane.geometry} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
-                                <MeshTransmissionMaterial {...config} />
-                            </mesh>
-                            <mesh geometry={infoPlane.geometry} position={infoPlane.position} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
-                                <meshStandardMaterial
-                                    map={typerium}
-                                    roughness={0.8}
-                                    metalness={0.7}
-                                    clearcoat={1}
-                                    clearcoatRoughness={0.2}
-                                />
-                            </mesh>
-                        </group>
-                    </Float>
-
-                    {/* Bottom Card */}
-                    <Float
-                        speed={randomFloats.bottom.speed}
-                        rotationIntensity={randomFloats.bottom.rotationIntensity}
-                        floatIntensity={randomFloats.bottom.floatIntensity}
-                    >
-                        <group position={bottomPosition} scale={2}>
-                            <mesh geometry={nodes.Plane.geometry} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
-                                <MeshTransmissionMaterial {...config} />
-                            </mesh>
-                            <mesh geometry={infoPlane.geometry} position={infoPlane.position} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
-                                <meshStandardMaterial
-                                    map={furniture}
-                                    roughness={0.8}
-                                    metalness={0.7}
-                                    clearcoat={1}
-                                    clearcoatRoughness={0.2}
-                                />
-                            </mesh>
-                        </group>
-                    </Float>
+        <group position={position}>
+            {/* Top Card */}
+            <Float
+                speed={randomFloats.top.speed}
+                rotationIntensity={randomFloats.top.rotationIntensity}
+                floatIntensity={randomFloats.top.floatIntensity}
+            >
+                <group position={topPosition} scale={1.1}>
+                    <mesh geometry={nodes.Plane.geometry} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
+                        <MeshTransmissionMaterial {...config} />
+                    </mesh>
+                    <mesh geometry={infoPlane.geometry} position={infoPlane.position} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
+                        <meshStandardMaterial
+                            map={B1}
+                            roughness={0.8}
+                            metalness={0.7}
+                            clearcoat={1}
+                            clearcoatRoughness={0.2}
+                        />
+                    </mesh>
                 </group>
-            </Scroll>
-        </>
+            </Float>
+
+            {/* Middle Card */}
+            <Float
+                speed={randomFloats.middle.speed}
+                rotationIntensity={randomFloats.middle.rotationIntensity}
+                floatIntensity={randomFloats.middle.floatIntensity}
+            >
+                <group position={middlePosition} scale={1.1}>
+                    <mesh geometry={nodes.Plane.geometry} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
+                        <MeshTransmissionMaterial {...config} />
+                    </mesh>
+                    <mesh geometry={infoPlane.geometry} position={infoPlane.position} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
+                        <meshStandardMaterial
+                            map={typerium}
+                            roughness={0.8}
+                            metalness={0.7}
+                            clearcoat={1}
+                            clearcoatRoughness={0.2}
+                        />
+                    </mesh>
+                </group>
+            </Float>
+
+            {/* Bottom Card */}
+            <Float
+                speed={randomFloats.bottom.speed}
+                rotationIntensity={randomFloats.bottom.rotationIntensity}
+                floatIntensity={randomFloats.bottom.floatIntensity}
+            >
+                <group position={bottomPosition} scale={1.1}>
+                    <mesh geometry={nodes.Plane.geometry} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
+                        <MeshTransmissionMaterial {...config} />
+                    </mesh>
+                    <mesh geometry={infoPlane.geometry} position={infoPlane.position} rotation={[0, -Math.PI / 2, 0]} side={THREE.DoubleSide}>
+                        <meshStandardMaterial
+                            map={furniture}
+                            roughness={0.8}
+                            metalness={0.7}
+                            clearcoat={1}
+                            clearcoatRoughness={0.2}
+                        />
+                    </mesh>
+                </group>
+            </Float>
+        </group>
+    );
+}
+
+export default function Projects({ ...props }) {
+    return (
+        <div className='project-section'>
+
+            <ScrollFloat
+                animationDuration={1}
+                ease='back.inOut(2)'
+                scrollStart='center bottom+=50%'
+                scrollEnd='bottom bottom-=40%'
+                stagger={0.03}
+                className='title-project'
+            >
+                Work
+            </ScrollFloat>
+            {/* <div className='title-project'>
+                <span>Work</span>
+            </div> */}
+            <Canvas
+                shadows
+                camera={{
+                    fov: 45,
+                    near: 0.1,
+                    far: 1000,
+                    position: [0, 0, 10]
+                }}
+                className='project-canvas'
+            >
+                <ambientLight intensity={6} />
+                <Suspense>
+                    <Cards position={props.position} />
+                </Suspense>
+            </Canvas>
+        </div>
     )
 }
 
