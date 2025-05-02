@@ -30,7 +30,7 @@ body {
 
 .navbar {
     margin-top: 1rem;
-    background-color: rgba(128, 128, 128, 0.2);
+    background-color: rgba(128, 128, 128, 0.4);
     color: rgb(253, 253, 253);
     z-index: 100;
     position: fixed;
@@ -118,7 +118,7 @@ body {
 .foreground-text {
     position: absolute;
     font-size: 9vw;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgb(255, 255, 255, 0.2);
     z-index: 1;
     pointer-events: none;
 }
@@ -142,21 +142,6 @@ body {
     z-index: 1;
 }
 
-.project-section {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    background-color: black;
-}
-
-.project-canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    overflow: hidden;
-}
-
 .title-project span {
     display: flex;
     justify-content: center;
@@ -164,4 +149,156 @@ body {
     color: aliceblue;
     font-size: 100px;
     margin-top: 100px;
+}
+
+.scroll-reveal {
+    margin: 20px 0;
+}
+
+.scroll-reveal-text {
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    line-height: 1.5;
+    font-weight: 600;
+    color: white;
+}
+
+.word {
+    display: inline-block;
+}
+
+.project-section {
+    margin: 10%;
+}
+
+.card-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-top: 50px;
+    position: relative;
+}
+
+.custom-spotlight-card svg {
+    position: absolute;
+}
+
+.custom-spotlight-card .line {
+    stroke-dasharray: 260;
+    stroke-width: 1px;
+    fill: transparent;
+    stroke: rgba(78, 255, 13, 0.3);
+    animation: svgAnimation 2.5s linear infinite;
+}
+
+.card-spotlight {
+    position: relative;
+    border-radius: 0.5rem;
+    border: 1px solid #222;
+    background-color: #111;
+    /* padding: 2rem; */
+    overflow: hidden;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    --spotlight-color: rgba(255, 255, 255, 0.05);
+}
+
+.card-spotlight::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 80%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.card-spotlight:hover::before,
+.card-spotlight:focus-within::before {
+    opacity: 0.6;
+}
+
+.custom-spotlight-card {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+}
+
+.up,
+.down {
+    overflow: hidden;
+    border-radius: 1.5rem;
+    height: 50%;
+}
+
+.up {
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.up img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-radius: 0.5rem;
+}
+
+.up img:hover {
+    transform: scale(1.05);
+}
+
+.down {
+    padding: 1.5rem;
+    color: aliceblue;
+}
+
+@keyframes svgAnimation {
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: 1000;
+    }
+}
+
+
+/* ------------------shiny-text--------------------- */
+.Title {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.shiny-text {
+    color: #b5b5b5a4;
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(255, 255, 255, 0.8) 50%,
+            rgba(255, 255, 255, 0) 60%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    display: inline-block;
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 100%;
+    }
+
+    100% {
+        background-position: -100%;
+    }
+}
+
+.shiny-text.disabled {
+    animation: none;
 }

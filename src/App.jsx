@@ -10,14 +10,10 @@ import { useControls } from 'leva'
 import Cursor from './components/UI/Cursor.jsx'
 import gsap from 'gsap'
 import Physball from './components/three/Physball.jsx'
-import About from './components/three/About.jsx'
-import Projects from './components/three/Projects.jsx'
+import About from './components/UI/About.jsx'
+import Projects from './components/UI/Projects.jsx'
 import ProjectTitle from './components/UI/ProjectTitle.jsx'
 import Lights from './components/three/Lights.jsx'
-
-const setBg = ({ gl }) => { gl.setClearColor('#000000') }
-
-const projectsPosition = window.innerWidth < 400 ? [0, -36, 0] : [0, -25, 0];
 
 const App = () => {
     return (

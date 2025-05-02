@@ -4,6 +4,7 @@ import restart from 'vite-plugin-restart'
 
 export default {
     root: 'src/',
+    port: 2001,
     publicDir: '../public/',
     plugins:
         [
