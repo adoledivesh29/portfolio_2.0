@@ -12,13 +12,16 @@ import gsap from 'gsap'
 import Physball from './components/three/Physball.jsx'
 import About from './components/UI/About.jsx'
 import Projects from './components/UI/Projects.jsx'
-import ProjectTitle from './components/UI/ProjectTitle.jsx'
+import Gallary from './components/UI/Gallary.jsx'
+import Title from './components/UI/Title.jsx'
 import Lights from './components/three/Lights.jsx'
+import Fireflies from './components/three/Fireflies.jsx'
 
 const App = () => {
     return (
         <div>
             <Cursor />
+            <Fireflies />
             <Navbar />
             {/* <div className='canvas bg-black h-screen w-screen'>
                 <Canvas
@@ -41,12 +44,13 @@ const App = () => {
             <Hero />
             <About />
             <Projects />
+            <Gallary />
             {/* <Scroll html style={{ width: '100%' }}>
                         <html>
                             <h1 className="slogan text-6xl backdrop-blur-sm text-white mt-800 mb-20 leading-slogan-leading font-customHeading text-center pointer-events-none">Innovating Interfaces with Precision</h1>
                             <About />
                         </html>
-                        <ProjectTitle />
+                        <Title />
                     </Scroll> */}
             {/* <Projects position={projectsPosition} />
                     <Physball position={window.innerWidth < 400 ? [0, -50, 0] : [0, -38, 0]} /> */}

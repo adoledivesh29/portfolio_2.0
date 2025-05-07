@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import ParticleModel from './ParticleModel.jsx';
 import { Suspense, useEffect, useRef } from 'react';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
+import Fireflies from './Fireflies.jsx'
 import gsap from 'gsap';
 
 const setBg = ({ gl }) => { gl.setClearColor('#000000') }
@@ -42,8 +43,8 @@ export default function Hero() {
 
     return (
         <div className='hero-section'>
-            <div ref={backgroundTextRef} className='background-text left font-customHeading'>Innovative</div>
-            <div ref={foregroundTextRef} className='foreground-text right font-customHeading'>Elegance</div>
+            <div ref={backgroundTextRef} className='background-text left'>Innovative</div>
+            <div ref={foregroundTextRef} className='foreground-text right'>Elegance</div>
             <Canvas
                 shadows
                 camera={{

@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { useRef, useState, useMemo, useEffect, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Billboard, Text, TrackballControls, Scroll } from '@react-three/drei'
-import galience from '../../assets/fonts/La-Gagliane.otf'
+import galience from '../../assets/fonts/YesevaOne-Regular.ttf'
 
 // Define a user-defined array of strings
 const predefinedWords = [

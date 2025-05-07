@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        customHeading: ['La-Gagliane', 'sans-serif'],
-        customPara: ['Amore', 'sans-serif'],
+        customHeading: ['YesevaOne-Regular', 'sans-serif'],
+        customPara: ['Karla-VariableFont_wght', 'sans-serif'],
       },
       spacing: {
         '800': '800px',
