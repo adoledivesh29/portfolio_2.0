@@ -2,9 +2,22 @@ import React from 'react';
 import SpotlightCard from '../../custom/SpotlightCard';
 import b1 from '../../assets/images/projects/b1.png'
 import ShinyText from '../../custom/ShinyText'
+import { useState } from 'react'
+import { Edit, Search, Play, Link } from 'lucide-react';
 import Title from './Title'
+import { useMouse } from '../../hooks/useMouse'
 
 export default function Projects() {
+
+    const [mouseState, ref] = useMouse();
+    const [cursorContent, setCursorContent] = useState(null);
+    const icons = {
+        edit: <Edit size={16} />,
+        search: <Search size={16} />,
+        play: <Play size={16} />,
+        link: <Link size={16} />,
+    };
+
     return (
         <div className='project-section'>
             <Title title={"Projects"} />
