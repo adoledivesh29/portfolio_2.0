@@ -13,6 +13,7 @@ const BlurText = ({
     animationTo,
     easing = 'easeOutCubic',
     onAnimationComplete,
+    specialCharStyle = {},
 }) => {
     const elements = animateBy === 'words' ? text.split(' ') : text.split('');
     const [inView, setInView] = useState(false);
@@ -78,6 +79,7 @@ const BlurText = ({
                         ...props,
                         display: 'inline-block',
                         willChange: 'transform, filter, opacity',
+                        ...(elements[index] === 'V' ? specialCharStyle : {}),
                     }}
                 >
                     {elements[index] === ' ' ? '\u00A0' : elements[index]}

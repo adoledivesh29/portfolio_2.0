@@ -11,10 +11,10 @@ const About = () => {
             </h1>
             <BlurText
                 text="I am Divesh"
-                delay={150}
+                delay={50}
                 animateBy="words"
                 direction="top"
-                // onAnimationComplete={handleAnimationComplete}
+                specialCharStyle={{ color: '#ff0000' }}
                 className="text-white text-6xl text-center font-customHeading pt-5" />
             <div className="about-para">
                 <BlurText

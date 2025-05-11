@@ -1,6 +1,8 @@
 import './styles.css'
+import './skills.css'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
+
 
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
