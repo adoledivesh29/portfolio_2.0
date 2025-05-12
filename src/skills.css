@@ -69,6 +69,7 @@
 
 .skills {
     display: flex;
+    justify-content: center;
     gap: 20px;
     margin-left: 10%;
     margin-right: 10%;
