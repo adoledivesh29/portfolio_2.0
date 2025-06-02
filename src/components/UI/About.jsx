@@ -14,6 +14,9 @@ const About = () => {
                 delay={50}
                 animateBy="words"
                 direction="top"
+                highlightWords={[
+                    "I", "am", "Divesh"
+                ]}
                 specialCharStyle={{ color: '#ff0000' }}
                 className="text-white text-6xl text-center font-customHeading pt-5" />
             <div className="about-para">
@@ -22,8 +25,15 @@ const About = () => {
                     delay={150}
                     animateBy="words"
                     direction="top"
+                    highlightWords={[
+                        'Frontend', 'Developer',
+                        'crafting', 'interactive', 'responsive',
+                        'React', 'Three.js', 'Phaser',
+                        'performance', 'immersive', 'experiences'
+                    ]}
                     className="text-white text-[32px] text-justify font-customPara pt-12 max-w-6xl"
                 />
+
             </div>
         </div >
     )

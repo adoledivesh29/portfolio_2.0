@@ -289,7 +289,7 @@
      position: absolute;
      font-size: 6vw;
      color: rgba(255, 255, 255, 0.2);
-     z-index: 0;
+     z-index: 2;
      pointer-events: none;
  }
 
@@ -606,4 +606,250 @@
 
  .credit:hover {
      opacity: 1;
+ }
+
+ .timeline-wrapper {
+     position: relative;
+     width: 100%;
+     overflow: hidden;
+     padding-top: 4rem;
+ }
+
+ .svg-container {
+     position: relative;
+     width: 100%;
+     height: 120px;
+     z-index: 1;
+     margin-top: 4rem;
+ }
+
+ .timeline-icon {
+     position: absolute;
+     width: 100%;
+     height: auto;
+     top: 0;
+     left: 0;
+ }
+
+ .wrapper {
+     overflow-x: hidden;
+     position: relative;
+     margin-bottom: 10%;
+     margin-left: 10%;
+     margin-right: 10%;
+     padding-top: 1rem;
+ }
+
+ .timeline-container {
+     display: flex;
+     width: 300vw;
+     color: #ffffff;
+     position: relative;
+     z-index: 2;
+     overflow-y: hidden;
+ }
+
+ .timeline-container .col {
+     display: flex;
+     gap: 3em;
+ }
+
+ .timeline-container .col p {
+     font-size: 0.8rem;
+ }
+
+ section {
+     width: 100vw;
+     padding: 8vw 10vw;
+     position: relative;
+     overflow: hidden;
+ }
+
+ section h1 {
+     font-size: 3rem;
+     margin: 0;
+     margin-bottom: 1rem;
+ }
+
+ section span {
+     display: block;
+     font-size: 1.2rem;
+     margin-bottom: 0.5rem;
+     color: #CA970A;
+ }
+
+ /* Add responsive adjustments */
+ @media (max-width: 768px) {
+     .svg-container {
+         height: 80px;
+         margin-bottom: 1.5rem;
+     }
+
+     section {
+         padding: 8vw 5vw;
+     }
+
+     section h1 {
+         font-size: 2.5rem;
+     }
+ }
+
+ @media (max-width: 480px) {
+     .svg-container {
+         height: 60px;
+         margin-bottom: 1rem;
+     }
+
+     section {
+         padding: 6vw 4vw;
+     }
+
+     section h1 {
+         font-size: 2rem;
+     }
+
+     .timeline-container .col {
+         flex-direction: column;
+         gap: 1.5em;
+     }
+ }
+
+ /* Skills Marquee */
+
+ .marquees-wrapper {
+     position: relative;
+     height: 40vh;
+     width: 100%;
+     overflow-x: hidden;
+     /* top: -50%; */
+ }
+
+ .marquees-wrapper::after {
+     position: absolute;
+     content: "";
+     inset: 0;
+     box-shadow: inset 0 0 100px 70px rgba(0, 0, 0, 1);
+     z-index: 1;
+ }
+
+ .marquee {
+     --gap: 1rem;
+     margin-block: 10px;
+     display: flex;
+     gap: var(--gap);
+     background: #f5f521;
+     box-shadow: 0px 24px 17px 0px rgba(0, 0, 0, 0.75);
+     overflow: hidden;
+     user-select: none;
+     position: absolute;
+     width: 100%;
+     z-index: 2;
+     padding-left: 0;
+ }
+
+ .marquee__content {
+     flex-shrink: 0;
+     display: flex;
+     justify-content: flex-start;
+     min-width: 100%;
+     gap: var(--gap);
+     padding-left: 0;
+ }
+
+ .scroll {
+     animation: scroll 30s linear infinite;
+ }
+
+ @keyframes scroll {
+     from {
+         transform: translateX(0);
+     }
+
+     to {
+         transform: translateX(calc(-100% - var(--gap)));
+     }
+ }
+
+ .marquee__content li {
+     list-style: none;
+     text-transform: uppercase;
+     font-family: "Oswald", sans-serif;
+     font-size: 2rem;
+     white-space: nowrap;
+ }
+
+ /* Individual marquee strip styles */
+ .marquee-1 {
+     left: -10vw;
+     width: 120vw;
+     transform: rotate(7deg);
+ }
+
+ .marquee-1 .scroll {
+     animation-duration: 20s;
+ }
+
+ .marquee-2 {
+     top: 25%;
+     left: -10vw;
+     width: 120vw;
+     transform: rotate(10deg);
+ }
+
+ .marquee-2 .scroll {
+     animation-duration: 25s;
+     animation-direction: reverse;
+ }
+
+ .marquee-3 {
+     top: 50%;
+     left: -10vw;
+     width: 120vw;
+     transform: rotate(-5deg);
+ }
+
+
+ .contact-container {
+     position: relative;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: white;
+     margin-bottom: 10%;
+     min-height: 100vh;
+     overflow: hidden;
+ }
+
+ .contact-background {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: 1;
+     /* background-color: black; */
+ }
+
+ .contact-container .text-content {
+     position: relative;
+     z-index: 2;
+     display: flex;
+     flex-direction: column;
+     align-items: left;
+     justify-content: left;
+     color: white;
+     width: 50%;
+     padding: 2rem;
+     background: rgba(0, 0, 0, 0.5);
+     backdrop-filter: blur(10px);
+     border-radius: 1rem;
+ }
+
+ .contact-canvas {
+     width: 100%;
+     height: 100%;
+     display: block;
+     overflow: hidden;
+     position: relative;
+     z-index: 1;
  }

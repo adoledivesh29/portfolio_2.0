@@ -14,6 +14,7 @@ const BlurText = ({
     easing = 'easeOutCubic',
     onAnimationComplete,
     specialCharStyle = {},
+    highlightWords = [],
 }) => {
     const elements = animateBy === 'words' ? text.split(' ') : text.split('');
     const [inView, setInView] = useState(false);
@@ -72,20 +73,28 @@ const BlurText = ({
 
     return (
         <p ref={ref} className={`blur-text ${className}`}>
-            {springs.map((props, index) => (
-                <animated.span
-                    key={index}
-                    style={{
-                        ...props,
-                        display: 'inline-block',
-                        willChange: 'transform, filter, opacity',
-                        ...(elements[index] === 'V' ? specialCharStyle : {}),
-                    }}
-                >
-                    {elements[index] === ' ' ? '\u00A0' : elements[index]}
-                    {animateBy === 'words' && index < elements.length - 1 && '\u00A0'}
-                </animated.span>
-            ))}
+            {springs.map((props, index) => {
+                const isHighlighted =
+                    animateBy === 'words'
+                        ? highlightWords.includes(elements[index])
+                        : highlightWords.includes(elements[index]);
+
+                return (
+                    <animated.span
+                        key={index}
+                        style={{
+                            ...props,
+                            display: 'inline-block',
+                            willChange: 'transform, filter, opacity',
+                            opacity: isHighlighted ? 1 : 0.5,
+                            ...(elements[index] === 'V' ? specialCharStyle : {}),
+                        }}
+                    >
+                        {elements[index] === ' ' ? '\u00A0' : elements[index]}
+                        {animateBy === 'words' && index < elements.length - 1 && '\u00A0'}
+                    </animated.span>
+                );
+            })}
         </p>
     );
 };

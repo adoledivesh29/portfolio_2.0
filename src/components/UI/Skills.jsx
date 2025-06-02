@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import SkillMarquee from '../three/SkillMarquee'
 import Title from '../UI/Title'
 import aws from '../../assets/images/icons/aws.svg'
 import css3 from '../../assets/images/icons/css3.svg'
@@ -94,32 +95,35 @@ const Skills = () => {
     }, [currentSkill]);
 
     return (
-        <div className="skills">
-            <div className="skills-container" id="container">
-                {gridData.map((column, colIndex) => (
-                    <div className="column" style={{ '--column': colIndex + 2 }} key={colIndex}>
-                        {column.map((item, itemIndex) => (
-                            <div
-                                key={itemIndex}
-                                className="hexagon"
-                                style={{
-                                    '--index': item.index,
-                                }}
-                                onMouseEnter={() => handleMouseEnter(item.tech)}
-                                onMouseLeave={handleMouseLeave}
-                            >
-                                {item.icon && <img src={item.icon} alt={item.tech} className="icon-img" />}
-                            </div>
+        <>
+            <div className="skills">
+                <div className="skills-container" id="container">
+                    {gridData.map((column, colIndex) => (
+                        <div className="column" style={{ '--column': colIndex + 2 }} key={colIndex}>
+                            {column.map((item, itemIndex) => (
+                                <div
+                                    key={itemIndex}
+                                    className="hexagon"
+                                    style={{
+                                        '--index': item.index,
+                                    }}
+                                    onMouseEnter={() => handleMouseEnter(item.tech)}
+                                    onMouseLeave={handleMouseLeave}
+                                >
+                                    {item.icon && <img src={item.icon} alt={item.tech} className="icon-img" />}
+                                </div>
 
-                        ))}
-                    </div>
-                ))}
-            </div>
-            <div className="skill-title" ref={skillTitleRef}>
-                <Title title={currentSkill} />
-            </div>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+                <div className="skill-title" ref={skillTitleRef}>
+                    <Title title={currentSkill} />
+                </div>
 
-        </div>
+            </div>
+            <SkillMarquee />
+        </>
     );
 };
 

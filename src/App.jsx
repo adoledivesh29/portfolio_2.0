@@ -1,25 +1,15 @@
 import React from 'react'
-import { Canvas } from '@react-three/fiber'
 import Hero from './components/three/Hero.jsx'
-import * as THREE from 'three'
 import Navbar from './components/UI/navbar.jsx'
-import { ScrollControls, Scroll, Sparkles } from '@react-three/drei'
-// import Menu from './components/Menu.jsx'
-import { Leva } from 'leva'
-import { useControls } from 'leva'
-import Cursor from './components/UI/Cursor.jsx'
-import gsap from 'gsap'
-import Physball from './components/three/Physball.jsx'
 import About from './components/UI/About.jsx'
 import Projects from './components/UI/Projects.jsx'
 import Gallary from './components/UI/Gallary.jsx'
-import Title from './components/UI/Title.jsx'
-import Lights from './components/three/Lights.jsx'
 import Fireflies from './components/three/Fireflies.jsx'
 import SmoothFollower from './custom/SmoothFollower.jsx'
 import { CursorProvider } from './contexts/CursorContext.js'
 import Skills from './components/UI/Skills.jsx'
-
+import Timeline from './components/UI/Timeline.jsx'
+import Contact from './components/UI/Contact.jsx'
 const App = () => {
     return (
         <CursorProvider>
@@ -49,6 +39,8 @@ const App = () => {
                 <Projects />
                 <Gallary />
                 <Skills />
+                <Timeline />
+                <Contact />
                 {/* <Scroll html style={{ width: '100%' }}>
                         <html>
                         <h1 className="slogan text-6xl backdrop-blur-sm text-white mt-800 mb-20 leading-slogan-leading font-customHeading text-center pointer-events-none">Innovating Interfaces with Precision</h1>
