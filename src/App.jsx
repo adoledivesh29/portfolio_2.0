@@ -10,10 +10,12 @@ import { CursorProvider } from './contexts/CursorContext.js'
 import Skills from './components/UI/Skills.jsx'
 import Timeline from './components/UI/Timeline.jsx'
 import Contact from './components/UI/Contact.jsx'
+import SmoothScroll from './custom/SmoothScroll.jsx'
 const App = () => {
     return (
         <CursorProvider>
             <div>
+                <SmoothScroll />
                 <Fireflies />
                 <Navbar />
                 {/* <div className='canvas bg-black h-screen w-screen'>

@@ -11,7 +11,7 @@ const About = () => {
             </h1>
             <BlurText
                 text="I am Divesh"
-                delay={50}
+                delay={15}
                 animateBy="words"
                 direction="top"
                 highlightWords={[
@@ -22,7 +22,7 @@ const About = () => {
             <div className="about-para">
                 <BlurText
                     text="Frontend Developer with over two years of experience crafting interactive, responsive interfaces. Skilled in React, Three.js, and Phaser, with a focus on performance and creating immersive experiences."
-                    delay={150}
+                    delay={45}
                     animateBy="words"
                     direction="top"
                     highlightWords={[
