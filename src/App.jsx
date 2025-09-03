@@ -11,6 +11,7 @@ import Skills from './components/UI/Skills.jsx'
 import Timeline from './components/UI/Timeline.jsx'
 import Contact from './components/UI/Contact.jsx'
 import SmoothScroll from './custom/SmoothScroll.jsx'
+import Footer from './components/UI/Footer.jsx'
 const App = () => {
     return (
         <CursorProvider>
@@ -43,6 +44,7 @@ const App = () => {
                 <Skills />
                 <Timeline />
                 <Contact />
+                <Footer />
                 {/* <Scroll html style={{ width: '100%' }}>
                         <html>
                         <h1 className="slogan text-6xl backdrop-blur-sm text-white mt-800 mb-20 leading-slogan-leading font-customHeading text-center pointer-events-none">Innovating Interfaces with Precision</h1>

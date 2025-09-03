@@ -5,6 +5,13 @@
      font-style: normal;
  }
 
+ @font-face {
+     font-family: 'AMS_Manthan';
+     src: url('./assets/fonts/AMS-Manthan-Regular.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+ }
+
  /* @font-face {
     font-family: 'LibrevilleFree';
     src: url('./assets/fonts/LibrevilleFree.otf') format('truetype');
@@ -620,7 +627,7 @@
      width: 100%;
      height: 120px;
      z-index: 1;
-     margin-top: 12rem;
+     margin-top: 5em;
  }
 
  .timeline-icon {
@@ -895,4 +902,26 @@
          flex-direction: column;
          align-items: center;
      }
+ }
+
+ .footer {
+     height: 100vh;
+     background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(202, 151, 10, 0.25), transparent 70%), transparent;
+     position: relative;
+     overflow: hidden
+ }
+
+ .footer-content h1 {
+     z-index: -2;
+     font-size: 30em;
+     font-family: 'AMS_Manthan';
+     color: #ffffff;
+     position: absolute;
+     bottom: -10%;
+     left: 50%;
+     transform: translateX(-50%);
+ }
+
+ #address {
+     color: white
  }

@@ -23,8 +23,11 @@ export default function SmoothFollower() {
 
         window.addEventListener('mousemove', handleMouseMove);
 
+        const isCardRef = { current: variant === 'card' };
+
         const animate = () => {
             const lerp = (start, end, factor) => start + (end - start) * factor;
+            const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
 
             dotPosition.current.x = lerp(dotPosition.current.x, mousePosition.current.x, DOT_SMOOTHNESS);
             dotPosition.current.y = lerp(dotPosition.current.y, mousePosition.current.y, DOT_SMOOTHNESS);
@@ -32,9 +35,21 @@ export default function SmoothFollower() {
             borderDotPosition.current.x = lerp(borderDotPosition.current.x, mousePosition.current.x, BORDER_DOT_SMOOTHNESS);
             borderDotPosition.current.y = lerp(borderDotPosition.current.y, mousePosition.current.y, BORDER_DOT_SMOOTHNESS);
 
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+
+            const dotR = 4; // 8px / 2
+            const borderR = isCardRef.current ? 30 : 14; // 60px/2 or 28px/2
+
+            const clampedDotX = clamp(dotPosition.current.x, dotR, w - dotR);
+            const clampedDotY = clamp(dotPosition.current.y, dotR, h - dotR);
+
+            const clampedBorderX = clamp(borderDotPosition.current.x, borderR, w - borderR);
+            const clampedBorderY = clamp(borderDotPosition.current.y, borderR, h - borderR);
+
             setRenderPos({
-                dot: { x: dotPosition.current.x, y: dotPosition.current.y },
-                border: { x: borderDotPosition.current.x, y: borderDotPosition.current.y },
+                dot: { x: clampedDotX, y: clampedDotY },
+                border: { x: clampedBorderX, y: clampedBorderY },
             });
 
             requestAnimationFrame(animate);
@@ -46,12 +61,12 @@ export default function SmoothFollower() {
             window.removeEventListener('mousemove', handleMouseMove);
             cancelAnimationFrame(animationId);
         };
-    }, []);
+    }, [variant]);
 
     const isCard = variant === 'card';
 
     return (
-        <div className="pointer-events-none fixed inset-0 z-[1001]">
+        <div className="pointer-events-none fixed inset-0 z-[1001] overflow-hidden">
             {!isCard && (
                 <div
                     className="absolute rounded-full dark:bg-white bg-black z-[1001]"
@@ -68,7 +83,7 @@ export default function SmoothFollower() {
             <div
                 className="absolute rounded-full border dark:border-white border-black z-[1001]"
                 style={{
-                    width: isCard ? '60px' : '28px',
+                    width: isCard ? '60px' : '28px',    
                     height: isCard ? '60px' : '28px',
                     backgroundColor: 'transparent',
                     transform: 'translate(-50%, -50%)',
