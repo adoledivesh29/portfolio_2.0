@@ -97,7 +97,7 @@ const Timeline = () => {
     }, [])
 
     return (
-        <div ref={containerRef} className='timeline-wrapper'>
+        <div ref={containerRef} className='timeline-wrapper' id='timeline'>
             <div className="svg-container">
                 <svg className='timeline-icon' width="1690" height="116" viewBox="0 0 1690 116" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path

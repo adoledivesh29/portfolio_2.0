@@ -31,7 +31,7 @@ export default function Projects() {
     };
 
     return (
-        <div className='project-section' ref={ref}>
+        <div className='project-section' ref={ref} id='projects'>
             {mouseState.x !== null && mouseState.y !== null && (
                 <div
                     className="fixed pointer-events-none z-50"

@@ -41,7 +41,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <div className='hero-section'>
+        <div className='hero-section' id="home">
             <div ref={backgroundTextRef} className='background-text left'>Innovative</div>
             <div ref={foregroundTextRef} className='foreground-text right'>Elegance</div>
             <Canvas

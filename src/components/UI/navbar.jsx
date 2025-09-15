@@ -3,6 +3,17 @@ import { useState } from "react";
 const TabBar = () => {
     const [activeTab, setActiveTab] = useState("tab-01");
 
+    const handleScroll = (id) => {
+        const el = document.querySelector(id);
+        if (el && window.lenis) {
+            window.lenis.scrollTo(el, {
+                offset: 0, // optional
+                immediate: false, // smooth
+                duration: 1.2,
+            });
+        }
+    };
+
     return (
         <div className="tabs-container">
             <div className="tabs">
@@ -13,6 +24,7 @@ const TabBar = () => {
                     id="tab-01"
                     checked={activeTab === "tab-01"}
                     onChange={() => setActiveTab("tab-01")}
+                    onClick={() => handleScroll("#home")}
                 />
                 <label htmlFor="tab-01">
                     <svg>
@@ -29,6 +41,7 @@ const TabBar = () => {
                     id="tab-02"
                     checked={activeTab === "tab-02"}
                     onChange={() => setActiveTab("tab-02")}
+                    onClick={() => handleScroll("#about")}
                 />
                 <label htmlFor="tab-02">
                     <svg>
@@ -45,6 +58,7 @@ const TabBar = () => {
                     id="tab-03"
                     checked={activeTab === "tab-03"}
                     onChange={() => setActiveTab("tab-03")}
+                    onClick={() => handleScroll("#projects")}
                 />
                 <label htmlFor="tab-03">
                     <svg>
@@ -61,6 +75,7 @@ const TabBar = () => {
                     id="tab-04"
                     checked={activeTab === "tab-04"}
                     onChange={() => setActiveTab("tab-04")}
+                    onClick={() => handleScroll("#timeline")}
                 />
                 <label htmlFor="tab-04">
                     <svg>
