@@ -192,7 +192,7 @@ const TabBar = () => {
             </svg>
 
             {/* Social Icons */}
-            <div className="socials">
+            {/* <div className="socials">
                 <a
                     className="dribbble"
                     href="https://dribbble.com/shots/9325107-Tabbar-animation-CodePen"
@@ -229,7 +229,7 @@ const TabBar = () => {
                         ></path>
                     </svg>
                 </a>
-            </div>
+            </div> */}
         </div>
     );
 };

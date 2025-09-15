@@ -2,7 +2,6 @@ import { Canvas } from '@react-three/fiber'
 import ParticleModel from './ParticleModel.jsx';
 import { Suspense, useEffect, useRef } from 'react';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import Fireflies from './Fireflies.jsx'
 import gsap from 'gsap';
 
 const setBg = ({ gl }) => { gl.setClearColor('#000000') }

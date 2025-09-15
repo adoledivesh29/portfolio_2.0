@@ -905,23 +905,45 @@
  }
 
  .footer {
-     height: 100vh;
-     background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(202, 151, 10, 0.25), transparent 70%), transparent;
+     width: 100%;
      position: relative;
-     overflow: hidden
+     overflow: hidden;
+     /* margin: 0;
+     padding: 0; */
+
  }
 
- .footer-content h1 {
-     z-index: -2;
-     font-size: 30em;
-     font-family: 'AMS_Manthan';
-     color: #ffffff;
+ .footer-glow {
      position: absolute;
-     bottom: -10%;
+     height: 100vh;
+     background: radial-gradient(ellipse 80% 80% at 50% 100%, rgba(202, 151, 10, 0.40), transparent 90%), transparent;
+     bottom: 0;
      left: 50%;
      transform: translateX(-50%);
+     width: 100vw;
+     pointer-events: none;
+     z-index: 2;
+     /* Make sure glow is above h1 */
  }
 
- #address {
-     color: white
+ /* .footer-content */
+
+ .footer-content h1 {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 30vw;
+     font-family: 'AMS_Manthan';
+     color: #ffffff;
+     position: relative;
+     z-index: 1;
+     /* h1 is below the glow */
+ }
+
+ .footer-content span {
+     display: flex;
+     justify-content: right;
+     color: white;
+     opacity: 70%;
+     font-family: sans-serif;
  }

@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { FlowFieldParticles } from '../../custom/FlowFieldParticles.jsx'
-import { useAnimations } from '@react-three/drei'
 
 
 export default function ParticleModel(props) {
