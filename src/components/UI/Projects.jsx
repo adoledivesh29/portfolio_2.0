@@ -1,7 +1,7 @@
 import React from 'react';
 import SpotlightCard from '../../custom/SpotlightCard';
 import b1 from '../../assets/images/projects/b1.png'
-import typerium from '../../assets/images/projects/typerium.png'
+import typerium from '../../assets/images/projects/Typerium.png'
 import WoodWave from '../../assets/images/projects/WoodWave.png'
 import ShinyText from '../../custom/ShinyText'
 import { useState } from 'react'
@@ -63,6 +63,9 @@ export default function Projects() {
                         key={index}
                         className="custom-spotlight-card cursor-pointer"
                         spotlightColor="rgba(188, 174, 19, 0.33)"
+                        onClick={() => {
+                            window.open(project.projectUrl, '_blank')
+                        }}
                     >
                         <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg"
                             onMouseOver={() => {

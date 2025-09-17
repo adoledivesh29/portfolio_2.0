@@ -8,7 +8,7 @@ const springValues = {
     mass: 2,
 };
 
-const SpotlightCard = ({ children, className = "", spotlightColor = "rgba(221, 206, 35, 0.25)" }) => {
+const SpotlightCard = ({ children, className = "", spotlightColor = "rgba(221, 206, 35, 0.25)", onclick }) => {
     const divRef = useRef(null);
 
     const handleMouseMove = (e) => {
@@ -78,6 +78,7 @@ const SpotlightCard = ({ children, className = "", spotlightColor = "rgba(221, 2
             onMouseMove={handleMouse}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={onclick}
             style={{
                 rotateX,
                 rotateY,

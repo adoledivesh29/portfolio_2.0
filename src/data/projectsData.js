@@ -19,7 +19,7 @@ const projectsData = [
         name: "Portfolio",
         description: "A 3D interactive portfolio website built with Three.js featuring creative animations and project showcases.",
         imagePath: "/src/assets/images/projects/b1.png",
-        projectUrl: "https://portfolio-showcase.com",
+        projectUrl: "https://grandlemar.com/pages/custom-made-suit",
         technologies: ["Three.js", "React", "TailwindCSS"],
         year: 2023
     },
