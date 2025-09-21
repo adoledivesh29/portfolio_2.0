@@ -29,7 +29,7 @@ const Navbar = () => {
                     {/* Logo/Brand */}
                     <div className="flex-shrink-0">
                         <h1 className="text-xl font-bold text-white font-['La-Gagliane']">
-                            Portfolio
+                            Dev
                         </h1>
                     </div>
 

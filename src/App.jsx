@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
 import Hero from './components/three/Hero.jsx'
 import Navbar from './components/UI/navbar.jsx'
 import About from './components/UI/About.jsx'
@@ -12,9 +13,21 @@ import Timeline from './components/UI/Timeline.jsx'
 import Contact from './components/UI/Contact.jsx'
 import SmoothScroll from './custom/SmoothScroll.jsx'
 import Footer from './components/UI/Footer.jsx'
+import Loader from './components/UI/Loader.jsx'
+
 const App = () => {
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Fake API call (5s delay)
+        const timer = setTimeout(() => setLoading(false), 500000);
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <CursorProvider>
+            <Loader loading={loading} />
             <div>
                 <SmoothScroll />
                 <Fireflies />
