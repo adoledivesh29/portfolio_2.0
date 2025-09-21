@@ -67,6 +67,26 @@
      --border-radius: var(--height);
  }
 
+ @keyframes marquee {
+     0% {
+         transform: translateX(100%);
+     }
+
+     100% {
+         transform: translateX(-100%);
+     }
+ }
+
+ .animate-marquee {
+     font-family: 'YesevaOne-Regular', sans-serif;
+     /* font-family: 'Karla-VariableFont_wght', sans-serif; */
+     display: flex;
+     justify-content: center;
+     /* padding-left: 100%; */
+     /* animation: marquee 12s linear infinite; */
+ }
+
+
  /* Container styling */
  .tabs-container {
      display: flex;

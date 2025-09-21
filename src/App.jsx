@@ -14,6 +14,7 @@ import Contact from './components/UI/Contact.jsx'
 import SmoothScroll from './custom/SmoothScroll.jsx'
 import Footer from './components/UI/Footer.jsx'
 import Loader from './components/UI/Loader.jsx'
+import Announcement from './components/UI/Announcement.jsx'
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
         <CursorProvider>
             <Loader loading={loading} />
             <div>
+                <Announcement />
                 <SmoothScroll />
                 <Fireflies />
                 <Navbar />
