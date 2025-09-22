@@ -3,6 +3,22 @@ import React, { useState, useEffect } from "react";
 const Announcement = ({ message }) => {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Detect mobile device
+    useEffect(() => {
+        const checkMobile = () => {
+            const isMobileDevice = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            setIsMobile(isMobileDevice);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,10 +48,13 @@ const Announcement = ({ message }) => {
     }, [lastScrollY]);
 
     return (
-        <div className={`w-full bg-yellow-400 text-black py-1 overflow-hidden z-500000 transition-transform duration-300 ease-in-out ${isVisible ? 'top-0' : '-top-10'
+        <div className={`w-full bg-yellow-400 text-black py-1 overflow-hidden z-5 transition-transform duration-300 ease-in-out ${isVisible ? 'top-0' : '-top-10'
             }`}>
             <div className="whitespace-nowrap animate-marquee">
-                {message || "🚧 This website is under development. Some features may not work properly. 🚧"}
+                {isMobile
+                    ? "📱 This website is not yet compatible with mobile devices. Please view on desktop for the best experience. 📱"
+                    : (message || "🚧 This website is under development. Some features may not work properly. 🚧")
+                }
             </div>
         </div>
     );
