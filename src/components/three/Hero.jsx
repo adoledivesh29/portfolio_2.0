@@ -63,7 +63,7 @@ export default function Hero() {
                         scale={1000}
                         // scale={window.innerWidth < 420 ? 500 : 1000}
                         rotation={[0, 5.3, 0]}
-                        position={[0, -0.5, 0]}
+                        position={[0, 0.4, 0]}
                     // position={window.innerWidth < 420 ? [0, 2, 0] : [0, -0.5, 0]}
                     />
                 </Suspense>

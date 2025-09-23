@@ -6,7 +6,7 @@ import BlurText from '../../custom/BlurText'
 const About = () => {
     return (
         <div className='about-section' id='about'>
-            <h1 className='text-white text-6xl text-center font-customHeading pt-12'>
+            <h1 className='text-white text-center font-customHeading pt-12'>
                 Hi,
             </h1>
             <BlurText
@@ -18,7 +18,8 @@ const About = () => {
                     "I", "am", "Divesh"
                 ]}
                 specialCharStyle={{ color: '#ff0000' }}
-                className="text-white text-6xl text-center font-customHeading pt-5" />
+                className="text-white text-center font-customHeading pt-5 name"
+            />
             <div className="about-para">
                 <BlurText
                     text="Frontend Developer with over two years of experience crafting interactive, responsive interfaces. Skilled in React, Three.js, and Phaser, with a focus on performance and creating immersive experiences."
@@ -31,7 +32,7 @@ const About = () => {
                         'React', 'Three.js', 'Phaser',
                         'performance', 'immersive', 'experiences'
                     ]}
-                    className="text-white text-[32px] text-center font-customPara pt-12 max-w-6xl"
+                    className="text-white text-center font-customPara pt-12 max-w-6xl info-para"
                 />
 
             </div>
