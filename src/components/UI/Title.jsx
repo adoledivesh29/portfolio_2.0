@@ -63,11 +63,12 @@ const Title = ({ title }) => {
                     maxIterations={200}
                     sequential={true}
                     characters="ABCD1234!?"
-                    className="revealed text-white text-6xl font-bold font-customHeading"
+                    className="revealed text-white font-bold font-customHeading title-text"
                     parentClassName="all-letters"
                     animateOn="view"
-                    encryptedClassName="encrypted text-white text-6xl font-bold font-customHeading"
+                    encryptedClassName="encrypted text-white font-bold font-customHeading title-text"
                 />
+
             </div>
             <div
                 ref={bottomLineRef}

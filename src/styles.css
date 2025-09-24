@@ -270,8 +270,13 @@
  .project-subTitle {
      color: #ffffff;
      font-size: 25px;
+     /* font-size: 2rem; */
      font-family: Karla-VariableFont_wght;
      opacity: 60%;
+ }
+
+ .title-text {
+     font-size: 3rem;
  }
 
  .card-wrap {
@@ -288,7 +293,7 @@
      position: absolute;
  }
 
- .custom-spotlight-card .line {
+ .custom-spotlight-card {
      stroke-dasharray: 260;
      stroke-width: 1px;
      fill: transparent;
@@ -648,10 +653,13 @@
          font-size: 1.5rem
      }
 
-     /* .project-section {
-         margin-left: 20%;
-         margin-right: 20%;
-     } */
+     .title-text {
+         font-size: 1.8rem;
+     }
+
+     .project-subTitle {
+         font-size: 1.2rem;
+     }
  }
 
  /* Skills Marquee */
