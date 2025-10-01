@@ -79,11 +79,29 @@
 
  .animate-marquee {
      font-family: 'YesevaOne-Regular', sans-serif;
-     /* font-family: 'Karla-VariableFont_wght', sans-serif; */
      display: flex;
      justify-content: center;
-     /* padding-left: 100%; */
-     /* animation: marquee 12s linear infinite; */
+ }
+
+
+ .loader-container {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 9999;
+ }
+
+ .loader-icon {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 300px;
+     height: 300px;
  }
 
 
@@ -660,6 +678,19 @@
      .project-subTitle {
          font-size: 1.2rem;
      }
+
+     .title {
+         width: 100%;
+         overflow: hidden;
+     }
+
+     .project-section {
+         margin-bottom: 20px;
+     }
+
+     .gallary {
+         margin-top: 100px;
+     }
  }
 
  /* Skills Marquee */
@@ -842,14 +873,6 @@
      .contact-container {
          flex-direction: column;
          align-items: center;
-     }
- }
-
- /* Responsive: stack on smaller screens */
- @media (max-width: 480px) {
-     .title {
-         width: 100%;
-         overflow: hidden;
      }
  }
 

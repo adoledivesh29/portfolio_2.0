@@ -22,29 +22,33 @@ const App = () => {
 
     useEffect(() => {
         // Fake API call (5s delay)
-        const timer = setTimeout(() => setLoading(false), 500000);
+        const timer = setTimeout(() => setLoading(false), 5000);
         return () => clearTimeout(timer);
     }, []);
 
     return (
-        <CursorProvider>
+        <>
             <Loader loading={loading} />
-            <div>
-                <Announcement />
-                <SmoothScroll />
-                <Fireflies />
-                <Navbar />
-                <Hero />
-                <About />
-                <Projects />
-                <Gallary />
-                <Skills />
-                <Timeline />
-                <Contact />
-                <Footer />
-                <SmoothFollower />
-            </div >
-        </CursorProvider>
+            <CursorProvider>
+                {!loading &&
+                    <div>
+                        <Announcement />
+                        <SmoothScroll />
+                        <Fireflies />
+                        <Navbar />
+                        <Hero />
+                        <About />
+                        <Projects />
+                        <Gallary />
+                        <Skills />
+                        <Timeline />
+                        <Contact />
+                        <Footer />
+                        <SmoothFollower />
+                    </div >
+                }
+            </CursorProvider>
+        </>
     )
 }
 
