@@ -50,7 +50,8 @@ export default function Hero() {
                     fov: 45,
                     near: 0.1,
                     far: 1000,
-                    position: [0, 0, 10]
+                    // Smaller Z => closer to the model. Increase Z to move back.
+                    position: [0, 0, 3]
                 }}
                 // onCreated={setBg}
                 className='hero-canvas'
@@ -60,10 +61,12 @@ export default function Hero() {
                 </EffectComposer>
                 <Suspense fallback={null}>
                     <ParticleModel
-                        scale={1000}
+                        // Combined with ParticleModel's internal scale={0.01}
+                        scale={1}
                         // scale={window.innerWidth < 420 ? 500 : 1000}
                         rotation={[0, 5.3, 0]}
-                        position={[0, 0.4, 0]}
+                        position={[0, 0, 2]}
+                    // interactive={false}
                     // position={window.innerWidth < 420 ? [0, 2, 0] : [0, -0.5, 0]}
                     />
                 </Suspense>

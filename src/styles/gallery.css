@@ -1,0 +1,159 @@
+.gallary {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: 110px;
+    gap: 1rem;
+    margin-top: 10vh;
+    position: relative;
+}
+
+.option {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0d0f0d;
+}
+
+.option:nth-child(1) {
+    grid-column: span 5;
+    grid-row: span 4;
+}
+
+.option:nth-child(2) {
+    grid-column: span 3;
+    grid-row: span 3;
+}
+
+.option:nth-child(3) {
+    grid-column: span 4;
+    grid-row: span 2;
+}
+
+.option:nth-child(4) {
+    grid-column: span 4;
+    grid-row: span 3;
+}
+
+.option:nth-child(5) {
+    grid-column: span 3;
+    grid-row: span 4;
+}
+
+.option img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: grayscale(20%) brightness(0.78);
+    transform: scale(1.01);
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.option::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(to top, rgba(0, 0, 0, 0.68), transparent 54%),
+        linear-gradient(135deg, rgba(78, 255, 13, 0.14), transparent 35%);
+    opacity: 0.72;
+    transition: opacity 0.4s ease;
+}
+
+.option:hover img {
+    filter: grayscale(0) brightness(1);
+    transform: scale(1.07);
+}
+
+.option:hover::after {
+    opacity: 0.9;
+}
+
+.option .label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    min-height: 45%;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    color: white;
+    font-family: Inter-VariableFont_opsz;
+}
+
+.option .info .main {
+    font-size: clamp(1.05rem, 1.5vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.option .info .sub {
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+    .gallary {
+        margin-left: 6%;
+        margin-right: 6%;
+    }
+
+    .options {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-auto-rows: 96px;
+    }
+
+    .option:nth-child(1),
+    .option:nth-child(4) {
+        grid-column: span 6;
+        grid-row: span 3;
+    }
+
+    .option:nth-child(2),
+    .option:nth-child(3),
+    .option:nth-child(5) {
+        grid-column: span 3;
+        grid-row: span 3;
+    }
+}
+
+@media (max-width: 560px) {
+    .gallary {
+        margin-top: 100px;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .options {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 0.9rem;
+        margin-top: 6vh;
+    }
+
+    .option,
+    .option:nth-child(n) {
+        grid-column: 1;
+        grid-row: auto;
+        aspect-ratio: 4 / 5;
+    }
+
+    .option:nth-child(1),
+    .option:nth-child(4) {
+        aspect-ratio: 1 / 1;
+    }
+}

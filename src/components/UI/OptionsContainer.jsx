@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import OptionCard from './OptionCard';
 import image1 from '../../assets/images/gallary/city_palace.jpg'
 import image2 from '../../assets/images/gallary/jagmandir.jpg'
@@ -40,16 +40,12 @@ const options = [
 ];
 
 export default function OptionsContainer() {
-    const [activeIndex, setActiveIndex] = useState(0);
-
     return (
         <div className="options">
             {options.map((option, index) => (
                 <OptionCard
                     key={index}
                     {...option}
-                    isActive={activeIndex === index}
-                    onClick={() => setActiveIndex(index)}
                 />
             ))}
         </div>

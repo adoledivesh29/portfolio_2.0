@@ -50,7 +50,7 @@ const Title = ({ title }) => {
     }, [inView])
 
     return (
-        <div ref={ref} className="mb-10 title">
+        <div ref={ref} className="mb-3 title">
             <div
                 ref={topLineRef}
                 className="h-1 w-0 bg-[#c50000] rounded mb-5"

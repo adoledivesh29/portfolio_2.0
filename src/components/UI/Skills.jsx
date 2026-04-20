@@ -89,14 +89,9 @@ const Skills = () => {
         }
     }, [currentSkill]);
 
-    // Add this effect to trigger a re-render of the Title component
-    useEffect(() => {
-        // This will cause the Title component to re-render
-    }, [currentSkill]);
-
     return (
         <>
-            <div className="skills">
+            <div id="skills" className="skills">
                 <div className="skills-container" id="container">
                     {gridData.map((column, colIndex) => (
                         <div className="column" style={{ '--column': colIndex + 2 }} key={colIndex}>

@@ -1,0 +1,69 @@
+/* ─────────────────────────────────────────────
+   hero.css  —  hero canvas section + fireflies
+   ───────────────────────────────────────────── */
+
+.fireFlies {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Decorative large text overlays */
+.left {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    font-family: La-Gagliane;
+    font-size: 6vw;
+    color: rgba(255, 255, 255, 0.2);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.right {
+    position: absolute;
+    font-family: La-Gagliane;
+    bottom: 10%;
+    right: 5%;
+    font-size: 9vw;
+    color: rgba(255, 255, 255, 0.2);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    .hero-section {
+        max-height: 30vh;
+    }
+
+    .left {
+        font-size: 30px;
+        top: 30%;
+    }
+
+    .right {
+        font-size: 30px;
+        bottom: 10%;
+    }
+}

@@ -1,0 +1,44 @@
+/* ─────────────────────────────────────────────
+   footer.css  —  footer with golden glow + big type
+   ───────────────────────────────────────────── */
+
+.footer {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-glow {
+    position: absolute;
+    height: 100vh;
+    background: radial-gradient(
+        ellipse 80% 80% at 50% 100%,
+        rgba(202, 151, 10, 0.40),
+        transparent 90%
+    ), transparent;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.footer-content h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30vw;
+    font-family: 'AMS_Manthan';
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-content span {
+    display: flex;
+    justify-content: right;
+    color: white;
+    opacity: 70%;
+    font-family: sans-serif;
+}

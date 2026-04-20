@@ -23,8 +23,6 @@ export default function SmoothFollower() {
 
         window.addEventListener('mousemove', handleMouseMove);
 
-        const isCardRef = { current: variant === 'card' };
-
         const animate = () => {
             const lerp = (start, end, factor) => start + (end - start) * factor;
             const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
@@ -39,7 +37,10 @@ export default function SmoothFollower() {
             const h = window.innerHeight;
 
             const dotR = 4; // 8px / 2
-            const borderR = isCardRef.current ? 30 : 14; // 60px/2 or 28px/2
+            const borderR =
+                variant === 'card' ? 30 :
+                variant === 'navlink' ? 22 :
+                14; // radii: 60px / 44px / 28px outer ring
 
             const clampedDotX = clamp(dotPosition.current.x, dotR, w - dotR);
             const clampedDotY = clamp(dotPosition.current.y, dotR, h - dotR);
@@ -63,13 +64,17 @@ export default function SmoothFollower() {
         };
     }, [variant]);
 
-    const isCard = variant === 'card';
+    const hideCenterDot = variant === 'card' || variant === 'navlink';
+    const borderRingPx =
+        variant === 'card' ? 60 :
+        variant === 'navlink' ? 44 :
+        28;
 
     return (
-        <div className="pointer-events-none fixed inset-0 z-[1001] overflow-hidden">
-            {!isCard && (
+        <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden">
+            {!hideCenterDot && (
                 <div
-                    className="absolute rounded-full dark:bg-white bg-black z-[1001]"
+                    className="absolute rounded-full dark:bg-white bg-black z-[99999]"
                     style={{
                         width: '8px',
                         height: '8px',
@@ -81,10 +86,10 @@ export default function SmoothFollower() {
             )}
 
             <div
-                className="absolute rounded-full border dark:border-white border-black z-[1001]"
+                className="absolute rounded-full border dark:border-white border-black z-[99999]"
                 style={{
-                    width: isCard ? '60px' : '28px',    
-                    height: isCard ? '60px' : '28px',
+                    width: `${borderRingPx}px`,
+                    height: `${borderRingPx}px`,
                     backgroundColor: 'transparent',
                     transform: 'translate(-50%, -50%)',
                     left: `${renderPos.border.x}px`,

@@ -7,8 +7,13 @@ export default function ParticleModel(props) {
     const { nodes, materials } = useGLTF('/models/deer.glb')
     return (
         <group group {...props} dispose={null} >
-            <group scale={0.01}>
-                <FlowFieldParticles size={0.3} disturbIntensity={0.18} lightRef={props.lightRef}>
+            <group>
+                <FlowFieldParticles
+                    size={0.03}
+                    disturbIntensity={0.18}
+                    interactive={props.interactive}
+                    lightRef={props.lightRef}
+                >
                     <mesh
                         castShadow
                         receiveShadow

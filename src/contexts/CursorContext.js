@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react';
 const CursorContext = createContext();
 
 export const CursorProvider = ({ children }) => {
-    const [variant, setVariant] = useState('default'); // 'default', 'card', 'link', etc.
+    const [variant, setVariant] = useState('default'); // 'default', 'card', 'navlink', etc.
 
     return (
         <CursorContext.Provider value={{ variant, setVariant }}>

@@ -21,7 +21,6 @@ const App = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Fake API call (5s delay)
         const timer = setTimeout(() => setLoading(false), 5000);
         return () => clearTimeout(timer);
     }, []);
@@ -32,7 +31,7 @@ const App = () => {
             <CursorProvider>
                 {!loading &&
                     <div>
-                        <Announcement />
+                        {/* <Announcement /> */}
                         <SmoothScroll />
                         <Fireflies />
                         <Navbar />
