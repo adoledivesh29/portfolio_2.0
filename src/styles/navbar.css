@@ -7,6 +7,12 @@
     z-index: 9000;
     pointer-events: none;
     overflow: visible;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.tilt-nav--hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .tilt-nav__track {
@@ -92,6 +98,14 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(18px) saturate(145%);
     -webkit-backdrop-filter: blur(18px) saturate(145%);
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.tilt-mobile--hidden,
+.tilt-mobile__menu--hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .tilt-mobile__brand {

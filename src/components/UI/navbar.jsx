@@ -15,6 +15,7 @@ const navLinks = [
 const Navbar = () => {
     const [activeLink, setActiveLink] = useState("home");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isFooterVisible, setIsFooterVisible] = useState(false);
 
     const { setVariant } = useCursor();
 
@@ -153,6 +154,25 @@ const Navbar = () => {
         return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        const footer = document.getElementById("footer");
+        if (!footer) return undefined;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsFooterVisible(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    setIsMenuOpen(false);
+                }
+            },
+            { threshold: 0.2 }
+        );
+
+        observer.observe(footer);
+
+        return () => observer.disconnect();
+    }, []);
+
     const handleScroll = (link) => {
         const el = document.querySelector(link.href);
         if (el && window.lenis) {
@@ -167,7 +187,11 @@ const Navbar = () => {
 
     return (
         <>
-            <nav ref={navRef} className="tilt-nav" aria-label="Main navigation">
+            <nav
+                ref={navRef}
+                className={`tilt-nav ${isFooterVisible ? "tilt-nav--hidden" : ""}`}
+                aria-label="Main navigation"
+            >
                 <div ref={trackRef} className="tilt-nav__track">
                     {navLinks.map((link, idx) => (
                         <button
@@ -205,7 +229,7 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            <nav className="tilt-mobile" aria-label="Mobile navigation">
+            <nav className={`tilt-mobile ${isFooterVisible ? "tilt-mobile--hidden" : ""}`} aria-label="Mobile navigation">
                 <span className="tilt-mobile__brand">Dev</span>
                 <button
                     type="button"
@@ -222,7 +246,11 @@ const Navbar = () => {
                 </button>
             </nav>
 
-            <div ref={mobileRef} className="tilt-mobile__menu" style={{ opacity: 0, pointerEvents: "none" }}>
+            <div
+                ref={mobileRef}
+                className={`tilt-mobile__menu ${isFooterVisible ? "tilt-mobile__menu--hidden" : ""}`}
+                style={{ opacity: 0, pointerEvents: "none" }}
+            >
                 {navLinks.map((link) => (
                     <button
                         key={link.id}

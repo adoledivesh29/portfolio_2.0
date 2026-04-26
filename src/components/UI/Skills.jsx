@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
+import gsap from 'gsap';
 import SkillMarquee from '../three/SkillMarquee'
-import Title from '../UI/Title'
 import aws from '../../assets/images/icons/aws.svg'
 import css3 from '../../assets/images/icons/css3.svg'
 import figma from '../../assets/images/icons/figma.svg'
@@ -58,6 +58,7 @@ const Skills = () => {
     const [currentSkill, setCurrentSkill] = useState("Skills");
     const leaveTimeout = useRef(null);
     const skillTitleRef = useRef(null);
+    const eyebrowRef    = useRef(null);
 
     const handleMouseEnter = (skill) => {
         if (leaveTimeout.current) {
@@ -79,14 +80,37 @@ const Skills = () => {
         }, 100);
     };
 
+    // Magnetic-pull char animation on every skill change
     useEffect(() => {
-        if (skillTitleRef.current) {
-            skillTitleRef.current.classList.add('fade-in');
-            const timeout = setTimeout(() => {
-                skillTitleRef.current.classList.remove('fade-in');
-            }, 300);
-            return () => clearTimeout(timeout);
-        }
+        const span = eyebrowRef.current;
+        if (!span) return;
+
+        const text = currentSkill || 'SKILLS';
+
+        // Kill any running tweens on existing chars
+        gsap.killTweensOf(span.querySelectorAll('.skill-char'));
+
+        // Split text into individual char spans
+        span.textContent = '';
+        const chars = text.split('').map((char) => {
+            const el = document.createElement('span');
+            el.className = 'skill-char';
+            el.textContent = char === ' ' ? '\u00A0' : char;
+            el.style.display = 'inline-block';
+            span.appendChild(el);
+            return el;
+        });
+
+        // Animate from random scattered positions
+        gsap.from(chars, {
+            x:        () => gsap.utils.random(-200, 200),
+            y:        () => gsap.utils.random(-200, 200),
+            opacity:  0,
+            rotation: () => gsap.utils.random(-90, 90),
+            stagger:  0.02,
+            duration: 1,
+            ease:     'power3.out',
+        });
     }, [currentSkill]);
 
     return (
@@ -113,11 +137,17 @@ const Skills = () => {
                     ))}
                 </div>
                 <div className="skill-title" ref={skillTitleRef}>
-                    <Title title={currentSkill} />
+                    <div className="about-eyebrow-wrap">
+                        <span className="about-eyebrow" ref={eyebrowRef}>{currentSkill || 'SKILLS'}</span>
+                        <div className="about-top-divider" aria-hidden="true">
+                            <span className="about-top-divider__line" />
+                            <span className="about-top-divider__spark" />
+                            <span className="about-top-divider__line" />
+                        </div>
+                    </div>
                 </div>
 
             </div>
-            <SkillMarquee />
         </>
     );
 };

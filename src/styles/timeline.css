@@ -66,12 +66,13 @@ section h1 {
     margin-bottom: 1rem;
 }
 
+/* 
 section span {
     display: block;
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     color: #CA970A;
-}
+} */
 
 /* ── Responsive ── */
 @media (max-width: 768px) {

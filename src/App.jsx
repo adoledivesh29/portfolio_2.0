@@ -15,6 +15,7 @@ import SmoothScroll from './custom/SmoothScroll.jsx'
 import Footer from './components/UI/Footer.jsx'
 import Loader from './components/UI/Loader.jsx'
 import Announcement from './components/UI/Announcement.jsx'
+import SkillMarquee from './components/three/SkillMarquee.jsx'
 
 const App = () => {
 
@@ -37,10 +38,11 @@ const App = () => {
                         <Navbar />
                         <Hero />
                         <About />
+                        <SkillMarquee />
                         <Projects />
                         <Gallary />
                         <Skills />
-                        <Timeline />
+                        {/* <Timeline /> */}
                         <Contact />
                         <Footer />
                         <SmoothFollower />

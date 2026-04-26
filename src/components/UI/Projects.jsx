@@ -5,7 +5,6 @@ import typerium from '../../assets/images/projects/Typerium.png'
 import WoodWave from '../../assets/images/projects/WoodWave.png'
 import ShinyText from '../../custom/ShinyText'
 import { Edit, Search, Play, Link } from 'lucide-react';
-import Title from './Title'
 import { useMouse } from '../../hooks/useMouse'
 import { useCursor } from '../../contexts/CursorContext';
 import projectsData from '../../data/projectsData';
@@ -140,7 +139,14 @@ export default function Projects() {
                     )}
                 </div>
             )}
-            <Title title={"Projects"} />
+            <div className="about-eyebrow-wrap">
+                <span className="about-eyebrow">PROJECTS</span>
+                <div className="about-top-divider" aria-hidden="true">
+                    <span className="about-top-divider__line" />
+                    <span className="about-top-divider__spark" />
+                    <span className="about-top-divider__line" />
+                </div>
+            </div>
             <h2 className='project-subTitle'>From concept to code, here are some things I've built recently.</h2>
             <div className='card-wrap'>
                 {projectsData.map((project, index) => (

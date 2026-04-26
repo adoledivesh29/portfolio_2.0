@@ -7,9 +7,11 @@
 
 .project-subTitle {
     color: #ffffff;
-    font-size: 25px;
+    font-size: 16px;
     font-family: Karla-VariableFont_wght;
     opacity: 60%;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .title-text {
@@ -44,7 +46,6 @@
     align-items: stretch;
     gap: 16vh;
     padding-top: 70px;
-    padding-bottom: 30vh;
     position: relative;
     perspective: 1200px;
 }
@@ -231,6 +232,7 @@
 
     .project-subTitle {
         font-size: 1.2rem;
+        margin-top: 10px;
     }
 
     .title {
@@ -247,7 +249,6 @@
     .card-wrap {
         gap: 8vh;
         padding-top: 40px;
-        padding-bottom: 18vh;
     }
 
     .project-stack-card {
